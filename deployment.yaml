@@ -2,9 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wp-deploy
+  labels:
+    app: wp
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: wp
   template:
+    metadata:
+      labels:
+        app: wp
     spec:
       containers:
         - name: stork
