@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-deploy
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: stork
+          image: wordpress:latest
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: wp-px-storage
