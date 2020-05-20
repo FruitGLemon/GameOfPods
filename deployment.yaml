@@ -10,25 +10,3 @@ spec:
     - port: 80
   selector:
     app: wp-service
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: wp-deploy
-  labels:
-    app: wp-deploy
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: wp-deploy
-  template:
-    metadata:
-      labels:
-        app: wp-deploy
-    spec:
-      containers:
-        - name: stork
-          image: wordpress:latest
-          ports:
-            - containerPort: 80
